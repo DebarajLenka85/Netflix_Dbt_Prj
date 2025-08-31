@@ -2,6 +2,7 @@ name: Netflix_Prj
 version: 1.0.0
 config-version: 2
 profile: Netflix_Prj
+
 model-paths:
   - models
 analysis-paths:
@@ -14,6 +15,25 @@ macro-paths:
   - macros
 snapshot-paths:
   - snapshots
+
+clean-targets:        
+  - target
+  - dbt_packages
+  
 models:
+
   Netflix_Prj:
     +materialized: view
+    
+    staging:
+      +materialized: view
+      
+    dim:
+      +materialized: table
+
+    fact:
+      +materialized: table
+
+    
+
+    
