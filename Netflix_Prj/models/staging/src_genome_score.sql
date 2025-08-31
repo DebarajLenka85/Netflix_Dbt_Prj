@@ -1,5 +1,3 @@
-{{ config(materialized = 'table') }}
-
 WITH raw_genome_scores AS (
   SELECT * FROM {{ source('netflix', 'r_genome_scores') }}
 )

@@ -1,5 +1,3 @@
-{{ config(materialized = 'table') }}
-
 WITH raw_movies AS (
     SELECT * FROM {{ source('netflix', 'r_movies') }}
 )

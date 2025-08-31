@@ -1,5 +1,3 @@
-{{ config(materialized = 'table') }}
-
 WITH raw_ratings AS (
   SELECT * FROM {{ source ('netflix', 'r_ratings')}}
 )

@@ -1,5 +1,3 @@
-{{ config(materialized = 'table') }}
-
 WITH raw_links AS (
   SELECT * FROM {{ source ('netflix', 'r_links')}}
 )
