@@ -6,6 +6,6 @@ Netflix_Prj:
       role: ACCOUNTADMIN
       warehouse: COMPUTE_WH
       database: MOVIELENS
-      schema: RAW
+      schema: DEV
       account: ''
       user: ''
