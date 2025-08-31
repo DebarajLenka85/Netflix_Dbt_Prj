@@ -1,0 +1,19 @@
+name: Netflix_Prj
+version: 1.0.0
+config-version: 2
+profile: Netflix_Prj
+model-paths:
+  - models
+analysis-paths:
+  - analyses
+test-paths:
+  - tests
+seed-paths:
+  - seeds
+macro-paths:
+  - macros
+snapshot-paths:
+  - snapshots
+models:
+  Netflix_Prj:
+    +materialized: view
