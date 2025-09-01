@@ -1,1 +1,1 @@
-drop table src_tags
+select * from MOVIELENS.SNAPSHOTS.SNAP_TAGS
