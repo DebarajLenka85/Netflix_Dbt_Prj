@@ -1,0 +1,11 @@
+Netflix_DBT:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      role: ACCOUNTADMIN
+      warehouse: COMPUTE_WH
+      database: MOVIELENS
+      schema: DEV_M
+      account: ' '
+      user: ' '
