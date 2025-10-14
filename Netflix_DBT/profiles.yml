@@ -1,5 +1,5 @@
 Netflix_DBT:
-  target: dev
+  target: dev_m
   outputs:
     dev:
       type: snowflake
