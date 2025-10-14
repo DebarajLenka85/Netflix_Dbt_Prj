@@ -38,7 +38,7 @@ models:
         tests:
           - not_null
 
-  - name: fct_ratings
+  - name: fact_ratings
     description: Fact table of user ratings for movies
     columns:
       - name: user_id
@@ -59,7 +59,7 @@ models:
       - name: rating_timestamp
         description: Unix timestamp when the rating was made
 
-  - name: fct_genome_scores
+  - name: fact_genome_scores
     description: Fact table of relevance scores per movie and tag
     columns:
       - name: movie_id
