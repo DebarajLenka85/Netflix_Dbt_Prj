@@ -1,6 +1,38 @@
-CREATE DATABASE MOVIELENS;
+##########################################################
+#             GIT Integration in Snowflake			     #
+##########################################################
+CREATE OR REPLACE DATABASE MOVIELENS;
+CREATE OR REPLACE SCHEMA DEV_M;
+
+CREATE OR REPLACE SECRET my_secret
+TYPE = PASSWORD
+USERNAME = '<your git username>'
+PASSWORD = 'your git passkey'
+COMMENT = 'My git credentials';
+
+CREATE OR REPLACE API INTEGRATION git_api_integration
+API_PROVIDER = git_https_api
+API_ALLOWED_PREFIXES = ('<your git link>')
+ALLOWED_AUTHENTICATION_SECRETS = (my_secret)
+ENABLED = TRUE;
+
+CREATE OR REPLACE GIT REPOSITORY Netflix_Dbt_Project
+API_INTEGRATION = git_api_integration
+ORIGIN = '<your git repository link>'
+GIT_CREDENTIALS = my_secret
+COMMENT = 'CREATED BY:    DEBARAJ LENKA
+           CREATED DATE:  14-10-2025';
+
+
+USE ROLE ACCOUNTADMIN;
+GRANT CREATE GIT REPOSITORY ON SCHEMA MOVIELENS.DEV_M TO ROLE ACCOUNTADMIN;
+
+
 USE DATABASE MOVIELENS;
 CREATE SCHEMA RAW_M;
+
+
+
 -----------------------------------------------------------------
 --STORAGE integration
 -----------------------------------------------------------------
