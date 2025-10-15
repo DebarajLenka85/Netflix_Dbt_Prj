@@ -41,8 +41,8 @@ create or replace storage integration PROJECT_DI_INTEGRATION
 type = EXTERNAL_STAGE
 storage_provider = S3
 enabled = TRUE
-storage_aws_role_arn = 'arn:aws:iam::72155911111111:role/project_role'
-storage_allowed_locations= ('s3://diprojectdatas/');
+storage_aws_role_arn = 'arn:aws:iam::111111111111:role/project_role'
+storage_allowed_locations= ('s3://movielen/');
 
 DESC INTEGRATION PROJECT_DI_INTEGRATION;
 
@@ -56,8 +56,8 @@ ENABLED = true
 TYPE = QUEUE
 NOTIFICATION_PROVIDER = AWS_SNS  
 DIRECTION = OUTBOUND
-AWS_SNS_TOPIC_ARN = 'arn:aws:sns:us-east-1:72155911111111:project_di_topic'  
-AWS_SNS_ROLE_ARN = 'arn:aws:iam::72155911111111:role/sns_role';
+AWS_SNS_TOPIC_ARN = 'arn:aws:sns:us-east-1:111111111111:project_di_topic'  
+AWS_SNS_ROLE_ARN = 'arn:aws:iam::111111111111:role/sns_role';
 
 DESC NOTIFICATION INTEGRATION PIPE_NOTIFICATION;
 
@@ -69,7 +69,7 @@ create or replace storage integration AWS_S3_NETFLIX_INT
 type = EXTERNAL_STAGE
 storage_provider = S3
 enabled = TRUE
-storage_aws_role_arn = 'arn:aws:iam::72155911111111:role/Nexflix_Dbt_Role'
+storage_aws_role_arn = 'arn:aws:iam::111111111111:role/Nexflix_Role'
 storage_allowed_locations= ('s3://movielen/');
 
 
@@ -322,10 +322,43 @@ select count(*) from raw_genome_tags
 union
 select count(*) from raw_ratings;
 
+show pipes;
+
+SELECT *
+FROM TABLE(VALIDATE_PIPE_LOAD(
+    PIPE_NAME => 'MOVIELENS.RAW_M.MOVIE_PIPE',
+    START_TIME => DATEADD(hour, -1, CURRENT_TIMESTAMP())
+));
 
 
+SELECT *
+FROM TABLE(VALIDATE_PIPE_LOAD(
+    PIPE_NAME => 'MOVIELENS.RAW_M.GENOME_SCORE_PIPE',
+    START_TIME => DATEADD(hour, -1, CURRENT_TIMESTAMP())
+));
 
 
+SELECT *
+FROM TABLE(VALIDATE_PIPE_LOAD(
+    PIPE_NAME => 'MOVIELENS.RAW_M.GENOME_TAGS_PIPE',
+    START_TIME => DATEADD(hour, -1, CURRENT_TIMESTAMP())
+));
+
+SELECT *
+FROM TABLE(VALIDATE_PIPE_LOAD(
+    PIPE_NAME => 'MOVIELENS.RAW_M.LINK_PIPE',
+    START_TIME => DATEADD(hour, -1, CURRENT_TIMESTAMP())
+));
+
+SELECT *
+FROM TABLE(VALIDATE_PIPE_LOAD(
+    PIPE_NAME => 'MOVIELENS.RAW_M.RATING_PIPE',
+    START_TIME => DATEADD(hour, -1, CURRENT_TIMESTAMP())
+));
 
 
-
+SELECT *
+FROM TABLE(VALIDATE_PIPE_LOAD(
+    PIPE_NAME => 'MOVIELENS.RAW_M.TAG_PIPE',
+    START_TIME => DATEADD(hour, -1, CURRENT_TIMESTAMP())
+));
