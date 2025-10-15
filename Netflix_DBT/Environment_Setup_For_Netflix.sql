@@ -1,3 +1,4 @@
+CREATE DATABASE MOVIELENS;
 USE DATABASE MOVIELENS;
 CREATE SCHEMA RAW_M;
 -----------------------------------------------------------------
