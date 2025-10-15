@@ -62,12 +62,9 @@ AWS_SNS_ROLE_ARN = 'arn:aws:iam::72155911111111:role/sns_role';
 DESC NOTIFICATION INTEGRATION PIPE_NOTIFICATION;
 
 
-
-
-
---Bucket Name -- netflixbucket85
-
-
+--------------------------------------------------------------
+--AWS SNOWFLAKE INTEGRATION
+--------------------------------------------------------------
 create or replace storage integration AWS_S3_NETFLIX_INT
 type = EXTERNAL_STAGE
 storage_provider = S3
